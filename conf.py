@@ -13,7 +13,7 @@ import _meta
 
 # -- Project information -----------------------------------------------------
 
-project = "test-doc"
+project = "test-doc-rk"
 author = "Rolf Krahl"
 copyright = "2020, %s" % author
 

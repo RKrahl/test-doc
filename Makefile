@@ -1,6 +1,6 @@
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = test-doc
+SPHINXPROJ    = test-doc-rk
 SOURCEDIR     = .
 BUILDDIR      = _build
 BUILDERS      = html dirhtml singlehtml epub latex latexpdf linkcheck	\
