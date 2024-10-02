@@ -7,23 +7,28 @@
 # http://www.sphinx-doc.org/en/master/config
 
 import os
+from pathlib import Path
 import sys
-sys.path.insert(0, os.path.abspath('.'))
+
+maindir = Path(__file__).resolve().parent
+sys.path[0] = str(maindir)
+sys.dont_write_bytecode = True
+
 import _meta
 
 # -- Project information -----------------------------------------------------
 
 project = "test-doc-rk"
 author = "Rolf Krahl"
-copyright = "2020, %s" % author
+copyright = "2020–2024, %s" % author
 
 # The full version, including alpha/beta/rc tags
 # Dummy for the time being
-release = _meta.__version__
+release = _meta.version
 # The short X.Y version
 version = ".".join(release.split(".")[0:2])
 
-today = _meta.__date__
+today = _meta.date
 
 # -- General configuration ---------------------------------------------------
 
@@ -51,7 +56,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -68,6 +73,15 @@ pygments_style = 'sphinx'
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
+
+# Define the canonical URL if you are using a custom domain on Read the Docs
+html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "")
+
+# Tell Jinja2 templates the build is running on Read the Docs
+if os.environ.get("READTHEDOCS", "") == "True":
+    if "html_context" not in globals():
+        html_context = {}
+    html_context["READTHEDOCS"] = True
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
