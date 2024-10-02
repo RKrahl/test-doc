@@ -1,1 +1,3 @@
-setuptools_scm
+git-props
+setuptools
+sphinx-rtd-theme
